@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zain Hafeez | Game Developer</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #00b4d8;
+            --accent: #f72585;
+            --dark: #0d1b2a;
+            --light: #e2e2e2;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            padding: 3rem 0 4rem;
+            text-align: center;
+            position: relative;
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -50px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            position: relative;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin: 0.5rem 0;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            color: rgba(255,255,255,0.8);
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+            nav ul {
+                display: flex;
+                justify-content: center;
+                list-style: none;
+                padding: 1rem 0;
+                margin: 0;
+            }
+
+            nav li {
+                margin: 0 1.5rem;
+            }
+
+            nav a {
+                color: var(--text);
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s;
+                position: relative;
+                padding: 0.5rem 0;
+            }
+
+                nav a:hover {
+                    color: var(--accent);
+                }
+
+                nav a::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 3px;
+                    background-color: var(--accent);
+                    transition: width 0.3s;
+                }
+
+                nav a:hover::after {
+                    width: 100%;
+                }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+            .section-title h2 {
+                display: inline-block;
+                padding-bottom: 10px;
+            }
+
+                .section-title h2::after {
+                    content: '';
+                    display: block;
+                    width: 60px;
+                    height: 4px;
+                    background-color: var(--accent);
+                    margin: 0.5rem auto 0;
+                }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+
+            .card h3 {
+                margin-top: 0;
+                color: var(--primary);
+            }
+
+            .card .date {
+                color: #666;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+                font-weight: 500;
+            }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill {
+            background-color: white;
+            color: var(--secondary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            border: 2px solid var(--secondary);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+            .skill:hover {
+                background-color: var(--secondary);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+            .game-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+
+            .game-card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                border-bottom: 3px solid var(--secondary);
+            }
+
+        .game-card-content {
+            padding: 1.5rem;
+        }
+
+        .game-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .game-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+            .btn:hover {
+                background-color: transparent;
+                color: var(--accent);
+                transform: translateY(-2px);
+            }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+            .btn-outline:hover {
+                background-color: var(--accent);
+                color: white;
+            }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+            .contact-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+
+            .contact-item i {
+                font-size: 1.8rem;
+                margin-right: 1.5rem;
+                color: var(--accent);
+            }
+
+            .contact-item h3 {
+                margin: 0 0 0.5rem;
+                color: var(--primary);
+            }
+
+            .contact-item p, .contact-item a {
+                margin: 0;
+                color: #666;
+                text-decoration: none;
+            }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            text-align: center;
+            padding: 3rem 0;
+            color: white;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+            .social-links a {
+                color: white;
+                font-size: 1.5rem;
+                transition: color 0.3s;
+            }
+
+                .social-links a:hover {
+                    color: var(--accent);
+                }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            header {
+                padding: 2rem 0 3rem;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+                margin-bottom: -30px;
+            }
+
+            footer {
+                clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+
+        /* Loading animation for game images */
+        .image-loader {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Zain Hafeez</h1>
+            <h2>Game Developer</h2>
+            <p class="tagline">3.5+ Years of Experience in Unity Game Development</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="card">
+                <p>I'm a passionate Unity Game Developer with over 3.5 years of experience specializing in hyper-casual game development and live ops. I thrive on creating engaging gameplay experiences and optimizing existing games for better performance and player retention.</p>
+                <p>My expertise includes rapid prototyping, implementing reusable design patterns, and collaborating in creative game storming sessions to bring innovative ideas to life.</p>
+                <a href="#contact" class="btn" style="margin-top: 1rem;">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Work Experience</h2>
+            </div>
+
+            <div class="card">
+                <div class="date">2023-08 - Current</div>
+                <h3>Game Developer at Geni Team Solutions, Lahore</h3>
+                <h4>Hyper Casual Production:</h4>
+                <ul>
+                    <li>Produced hyper-casual game prototypes like Arc Hero, Color Mixing, Flying Car Race, and Idle Store Supermarket</li>
+                    <li>Created my own game base project with full generic and reusable patterns</li>
+                    <li>Participated in Game Storming and Idea Creation meetings</li>
+                </ul>
+                <h4>Live Ops Game:</h4>
+                <ul>
+                    <li>Worked on and improved already successful games like Scary Teacher Stone Age & Jail Break</li>
+                    <li>Used debugging techniques to identify issues with games and resolve errors</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Game Developer at Tribech Solutions, Lahore</h3>
+                <ul>
+                    <li>Produced numerous hyper-casual game prototypes including All in Hole, Shape Shifter games, and merging games</li>
+                    <li>Learned game design principles specifically for hyper-casual games</li>
+                </ul>
+                <h4>Live Ops Game:</h4>
+                <ul>
+                    <li>Worked on and improved successful titles like Modern Commando FPS Shooter and US Army Missile Launcher</li>
+                    <li>Contributed to classic style parking and car stunt games</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Unity 3D Developer Certification by Game Train, Lahore</h3>
+                <ul>
+                    <li>Completed 3-month boot camp as trainee, learning Unity fundamentals and game development workflows</li>
+                    <li>Gained professional office culture experience</li>
+                    <li>Developed a third-person shooter game from scratch as final certification project</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="games">
+        <div class="container">
+            <div class="section-title">
+                <h2>Games I've Worked On</h2>
+            </div>
+
+            <div class="games-grid">
+                <!-- Scary Teacher Stone Age -->
+                <div class="game-card">
+                    <img src="https://play-lh.googleusercontent.com/dvRZWy4z77dKQ5szGHaw1vstEVp5lUtBZjrLuTNwxpgVCJUR7f5DzVhhsZFv0Ih96-Xm=w5120-h2880-rw"
+                         alt="Scary Teacher Stone Age">
+                    <div class="game-card-content">
+                        <h3>Scary Teacher Stone Age</h3>
+                        <p>Worked on improvements and live ops for this successful title.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.zatg.scaryteacher.stoneage&hl=en"
+                           class="btn btn-outline"
+                           target="_blank">
+                            View on Play Store
+                        </a>
+                    </div>
+                </div>
+
+                <!-- School Breakout Escape Run -->
+                <div class="game-card">
+                    <img src="https://play-lh.googleusercontent.com/_WZfsotOxCfEhZBVFHyg03hkMWQykdB6MYgAlvEsvdrqwfzh82siLBKMuLu2yT0E98lF=w5120-h2880-rw"
+                         alt="School Breakout Escape Run">
+                    <div class="game-card-content">
+                        <h3>School Breakout Escape Run</h3>
+                        <p>Contributed to this engaging escape game.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.zatg.school.breakout.escape.run&hl=en"
+                           class="btn btn-outline"
+                           target="_blank">
+                            View on Play Store
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Prison Escape Jailbreak Adventure -->
+                <div class="game-card">
+                    <img src="https://play-lh.googleusercontent.com/wpemzeEsQMKwqRy0t3VQXalp4dcP4cYJPnpuF4BwGAQAx1hSX36zOsb2RvlBSPzxC8Cr=w5120-h2880-rw"
+                         alt="Prison Escape Jailbreak Adventure">
+                    <div class="game-card-content">
+                        <h3>Prison Escape Jailbreak Adventure</h3>
+                        <p>Worked on improvements for this popular jailbreak game.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.genigames.prison.escape.jailbreak.adventure"
+                           class="btn btn-outline"
+                           target="_blank">
+                            View on Play Store
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Flying Car Jump Evolution -->
+                <div class="game-card">
+                    <img src="https://play-lh.googleusercontent.com/D3QV_VahnKX3fAU1bNCvpUdHr--xndkXZgcwGGQ1D7Rj98QHkzYsfDgrZ5wX3dd6v-w=w5120-h2880-rw"
+                         alt="Flying Car Jump Evolution">
+                    <div class="game-card-content">
+                        <h3>Flying Car Jump Evolution</h3>
+                        <p>Developed this exciting flying car game prototype.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.genigames.flying.car.jump.evolution"
+                           class="btn btn-outline"
+                           target="_blank">
+                            View on Play Store
+                        </a>
+                    </div>
+                </div>
+
+                <!-- War Drone -->
+                <div class="game-card">
+                    <img src="https://play-lh.googleusercontent.com/ELC7iliQR6E21zr2VLmDU3zYzBYeeYoy0jGe0EKrO62uoB34uxdQi8QHR807oyZH6dZ69hMtDqERhIrDdKFeYQ=w5120-h2880-rw"
+                         alt="War Drone">
+                    <div class="game-card-content">
+                        <h3>War Drone</h3>
+                        <p>Contributed to this drone combat game.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.genigames.drone.attack.war.strike"
+                           class="btn btn-outline"
+                           target="_blank">
+                            View on Play Store
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Brain Rot Escape -->
+                <div class="game-card">
+                    <img src="https://play-lh.googleusercontent.com/zFUe3At7xI-xNwJ42qIhDvMrBhbOmoSCgfsPfb9pL5T1kIcgVwlNfe9nRPWrVcYjyOs=w5120-h2880-rw"
+                         alt="Brain Rot Escape">
+                    <div class="game-card-content">
+                        <h3>Brain Rot Escape</h3>
+                        <p>Worked on this challenging obstacle course game.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.genigames.obby.prison.escape.brainrot"
+                           class="btn btn-outline"
+                           target="_blank">
+                            View on Play Store
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Epic Wheels Evolution -->
+                <div class="game-card">
+                    <img src="https://play-lh.googleusercontent.com/xt-Mi5hs8jxfLzoyjgF7dFglFgIeWurJ4vvrmzGrdAgxeGldsugM3onY19KbhKVFWbAV=w5120-h2880-rw"
+                         alt="Flying Wheels Evolution">
+                    <div class="game-card-content">
+                        <h3>Flying Wheels Evolution</h3>
+                        <p>Contributed to this flying car game.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.genigames.flying.car.jump.evolution"
+                           class="btn btn-outline"
+                           target="_blank">
+                            View on Play Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Skills</h2>
+            </div>
+
+            <div class="skills-container">
+                <span class="skill">C#</span>
+                <span class="skill">Unity 3D</span>
+                <span class="skill">Git</span>
+                <span class="skill">Adobe Photoshop</span>
+                <span class="skill">Adobe Illustrator</span>
+                <span class="skill">Microsoft Office</span>
+                <span class="skill">Assembla</span>
+                <span class="skill">Trello</span>
+                <span class="skill">Game Prototyping</span>
+                <span class="skill">Live Ops</span>
+                <span class="skill">Debugging</span>
+                <span class="skill">Game Design</span>
+                <span class="skill">Rapid Development</span>
+                <span class="skill">Hyper-Casual Games</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+
+            <div class="card">
+                <div class="date">2018-10 - 2020-12</div>
+                <h3>Master's Degree in Computer Science</h3>
+                <p>Government College University - Faisalabad</p>
+            </div>
+
+            <div class="card">
+                <div class="date">2016-08 - 2018-09</div>
+                <h3>Associate Degree Program</h3>
+                <p>University of Central Punjab (Okara Campus)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Address</h3>
+                        <p>Lahore, Pakistan</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+92 304 6355474</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>Czain410@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://www.linkedin.com/in/zain-hafeez-33b375223/" target="_blank">linkedin.com/in/zain-hafeez</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Zain Hafeez</h2>
+            <p>Game Developer | Unity Specialist | Hyper-Casual Expert</p>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/zain-hafeez-33b375223/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:Czain410@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+923046355474"><i class="fas fa-phone"></i></a>
+            </div>
+
+            <p>&copy; 2023 Zain Hafeez. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
