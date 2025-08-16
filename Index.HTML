@@ -22,6 +22,10 @@
             src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -37,6 +41,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
         header {
@@ -79,6 +84,8 @@
             position: relative;
             color: rgba(255,255,255,0.8);
             font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         nav {
@@ -93,13 +100,16 @@
             nav ul {
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 list-style: none;
                 padding: 1rem 0;
                 margin: 0;
+                flex-wrap: wrap;
+                gap: 1rem;
             }
 
             nav li {
-                margin: 0 1.5rem;
+                margin: 0;
                 position: relative;
             }
 
@@ -109,8 +119,9 @@
                 font-weight: 500;
                 transition: all 0.3s;
                 position: relative;
-                padding: 0.5rem 0;
+                padding: 0.5rem 1rem;
                 font-family: 'Poppins', sans-serif;
+                display: block;
             }
 
                 nav a:hover {
@@ -122,7 +133,8 @@
                     content: '';
                     position: absolute;
                     bottom: 0;
-                    left: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
                     width: 0;
                     height: 3px;
                     background-color: var(--accent);
@@ -131,17 +143,17 @@
                 }
 
                 nav a:hover::after {
-                    width: 100%;
+                    width: 80%;
                 }
 
         section {
-            padding: 4rem 0;
+            padding: 3rem 0;
             position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             position: relative;
         }
 
@@ -161,16 +173,22 @@
                     box-shadow: 0 0 10px var(--accent);
                 }
 
+            .section-title p {
+                margin-top: 1rem;
+                opacity: 0.8;
+            }
+
         .card {
             background-color: var(--ui-dark);
             border-radius: 8px;
             padding: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             border-top: 4px solid var(--secondary);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
             .card::before {
@@ -195,6 +213,12 @@
                 font-family: 'Poppins', sans-serif;
             }
 
+            .card h4 {
+                color: var(--accent);
+                margin: 1.5rem 0 1rem 0;
+                font-family: 'Poppins', sans-serif;
+            }
+
             .card .date {
                 color: #aaa;
                 font-size: 0.9rem;
@@ -203,19 +227,18 @@
             }
 
             .card ul {
-                padding-left: 1.2rem;
+                padding-left: 1.5rem;
+                margin: 1rem 0;
             }
 
             .card li {
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.8rem;
                 position: relative;
+                line-height: 1.6;
             }
 
-                .card li::before {
-                    content: '▹';
+                .card li::marker {
                     color: var(--accent);
-                    position: absolute;
-                    left: -1.2rem;
                 }
 
         .skills-container {
@@ -223,17 +246,22 @@
             flex-wrap: wrap;
             gap: 1rem;
             justify-content: center;
+            align-items: center;
         }
 
         .skill {
             background-color: var(--ui-dark);
             color: var(--secondary);
-            padding: 0.5rem 1.2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 30px;
             border: 2px solid var(--secondary);
             font-weight: 500;
             transition: all 0.3s;
             box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
         }
 
             .skill:hover {
@@ -245,8 +273,9 @@
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            align-items: start;
         }
 
         .game-card {
@@ -257,6 +286,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             position: relative;
             border: 1px solid var(--ui-light);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
             .game-card:hover {
@@ -267,7 +299,7 @@
 
             .game-card img {
                 width: 100%;
-                height: 180px;
+                height: 200px;
                 object-fit: cover;
                 border-bottom: 3px solid var(--secondary);
                 transition: transform 0.5s;
@@ -279,10 +311,14 @@
 
         .game-card-content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .game-card h3 {
             margin-top: 0;
+            margin-bottom: 1rem;
             color: var(--secondary);
             font-family: 'Poppins', sans-serif;
         }
@@ -290,6 +326,7 @@
         .game-card p {
             color: #aaa;
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .btn {
@@ -306,6 +343,8 @@
             font-family: 'Poppins', sans-serif;
             position: relative;
             overflow: hidden;
+            text-align: center;
+            margin-top: auto;
         }
 
             .btn::after {
@@ -344,19 +383,21 @@
 
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            align-items: stretch;
         }
 
         .contact-item {
             background-color: var(--ui-dark);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 8px;
             display: flex;
             align-items: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: all 0.3s;
             border: 1px solid var(--ui-light);
+            height: 100%;
         }
 
             .contact-item:hover {
@@ -366,10 +407,15 @@
             }
 
             .contact-item i {
-                font-size: 1.8rem;
+                font-size: 2rem;
                 margin-right: 1.5rem;
                 color: var(--accent);
                 text-shadow: 0 0 5px rgba(255, 45, 117, 0.5);
+                flex-shrink: 0;
+            }
+
+            .contact-item div {
+                flex-grow: 1;
             }
 
             .contact-item h3 {
@@ -383,6 +429,7 @@
                 color: #aaa;
                 text-decoration: none;
                 transition: color 0.3s;
+                word-break: break-word;
             }
 
                 .contact-item a:hover {
@@ -396,7 +443,7 @@
             padding: 3rem 0;
             color: white;
             clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
-            margin-top: 3rem;
+            margin-top: 2rem;
             border-top: 4px solid var(--accent);
             position: relative;
         }
@@ -414,16 +461,18 @@
         .social-links {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 1.5rem;
             margin: 1.5rem 0;
+            flex-wrap: wrap;
         }
 
             .social-links a {
                 color: white;
                 font-size: 1.5rem;
                 transition: all 0.3s;
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -438,18 +487,41 @@
                     background-color: var(--ui-dark);
                 }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
             nav ul {
                 flex-direction: column;
                 align-items: center;
+                gap: 0.5rem;
+                padding: 1.5rem 0;
             }
 
             nav li {
-                margin: 0.5rem 0;
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a {
+                padding: 0.8rem 1rem;
+                width: 100%;
             }
 
             h1 {
                 font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+                padding: 0 1rem;
             }
 
             header {
@@ -460,6 +532,65 @@
 
             footer {
                 clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+                padding: 2rem 0;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .skills-container {
+                gap: 0.8rem;
+            }
+
+            .skill {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-item {
+                padding: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+                .contact-item i {
+                    margin-right: 0;
+                    margin-bottom: 1rem;
+                }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            section {
+                padding: 2.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .skill {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .card {
+                padding: 1rem;
             }
         }
 
@@ -536,8 +667,9 @@
             height: 8px;
             background-color: var(--ui-light);
             border-radius: 4px;
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
             overflow: hidden;
+            width: 100%;
         }
 
         .skill-level {
@@ -575,13 +707,24 @@
             display: inline-block;
             background-color: var(--accent);
             color: white;
-            padding: 0.3rem 0.6rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 4px;
             font-size: 0.8rem;
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
+
+        /* Skills specialization section improvements */
+        .specialization-item {
+            margin-bottom: 1.5rem;
+        }
+
+            .specialization-item h4 {
+                margin-bottom: 0.5rem;
+                color: var(--text);
+                font-weight: 600;
+            }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -632,9 +775,11 @@
                     <li>Debugging and performance improvements</li>
                 </ul>
 
-                <div class="badge">Hyper-Casual Expert</div>
-                <div class="badge">Unity Specialist</div>
-                <div class="badge">Live Ops</div>
+                <div>
+                    <div class="badge">Hyper-Casual Expert</div>
+                    <div class="badge">Unity Specialist</div>
+                    <div class="badge">Live Ops</div>
+                </div>
 
                 <a href="#contact" class="btn" style="margin-top: 1rem;">Get In Touch</a>
             </div>
@@ -716,8 +861,10 @@
                     <div class="game-card-content">
                         <h3>Scary Teacher Stone Age</h3>
                         <p>Worked on improvements and live ops for this successful title.</p>
-                        <div class="badge">Live Ops</div>
-                        <div class="badge">Optimization</div>
+                        <div>
+                            <div class="badge">Live Ops</div>
+                            <div class="badge">Optimization</div>
+                        </div>
                         <a href="https://play.google.com/store/apps/details?id=com.zatg.scaryteacher.stoneage&hl=en"
                            class="btn btn-outline"
                            target="_blank">
@@ -733,8 +880,10 @@
                     <div class="game-card-content">
                         <h3>School Breakout Escape Run</h3>
                         <p>Contributed to this engaging escape game.</p>
-                        <div class="badge">Gameplay</div>
-                        <div class="badge">Level Design</div>
+                        <div>
+                            <div class="badge">Gameplay</div>
+                            <div class="badge">Level Design</div>
+                        </div>
                         <a href="https://play.google.com/store/apps/details?id=com.zatg.school.breakout.escape.run&hl=en"
                            class="btn btn-outline"
                            target="_blank">
@@ -750,8 +899,10 @@
                     <div class="game-card-content">
                         <h3>Prison Escape Jailbreak Adventure</h3>
                         <p>Worked on improvements for this popular jailbreak game.</p>
-                        <div class="badge">Live Ops</div>
-                        <div class="badge">Bug Fixing</div>
+                        <div>
+                            <div class="badge">Live Ops</div>
+                            <div class="badge">Bug Fixing</div>
+                        </div>
                         <a href="https://play.google.com/store/apps/details?id=com.genigames.prison.escape.jailbreak.adventure"
                            class="btn btn-outline"
                            target="_blank">
@@ -767,8 +918,10 @@
                     <div class="game-card-content">
                         <h3>Flying Car Jump Evolution</h3>
                         <p>Developed this exciting flying car game prototype.</p>
-                        <div class="badge">Prototyping</div>
-                        <div class="badge">Gameplay</div>
+                        <div>
+                            <div class="badge">Prototyping</div>
+                            <div class="badge">Gameplay</div>
+                        </div>
                         <a href="https://play.google.com/store/apps/details?id=com.genigames.flying.car.jump.evolution"
                            class="btn btn-outline"
                            target="_blank">
@@ -784,8 +937,10 @@
                     <div class="game-card-content">
                         <h3>War Drone</h3>
                         <p>Contributed to this drone combat game.</p>
-                        <div class="badge">AI</div>
-                        <div class="badge">Combat Systems</div>
+                        <div>
+                            <div class="badge">AI</div>
+                            <div class="badge">Combat Systems</div>
+                        </div>
                         <a href="https://play.google.com/store/apps/details?id=com.genigames.drone.attack.war.strike"
                            class="btn btn-outline"
                            target="_blank">
@@ -801,8 +956,10 @@
                     <div class="game-card-content">
                         <h3>Brain Rot Escape</h3>
                         <p>Worked on this challenging obstacle course game.</p>
-                        <div class="badge">Physics</div>
-                        <div class="badge">Level Design</div>
+                        <div>
+                            <div class="badge">Physics</div>
+                            <div class="badge">Level Design</div>
+                        </div>
                         <a href="https://play.google.com/store/apps/details?id=com.genigames.obby.prison.escape.brainrot"
                            class="btn btn-outline"
                            target="_blank">
@@ -840,25 +997,25 @@
 
             <div class="card" style="margin-top: 2rem;">
                 <h3>Specializations</h3>
-                <div style="margin-bottom: 1rem;">
+                <div class="specialization-item">
                     <h4>Hyper-Casual Game Development</h4>
                     <div class="skill-meter">
                         <div class="skill-level" style="width: 95%"></div>
                     </div>
                 </div>
-                <div style="margin-bottom: 1rem;">
+                <div class="specialization-item">
                     <h4>Unity Programming</h4>
                     <div class="skill-meter">
                         <div class="skill-level" style="width: 90%"></div>
                     </div>
                 </div>
-                <div style="margin-bottom: 1rem;">
+                <div class="specialization-item">
                     <h4>Live Ops & Updates</h4>
                     <div class="skill-meter">
                         <div class="skill-level" style="width: 85%"></div>
                     </div>
                 </div>
-                <div>
+                <div class="specialization-item">
                     <h4>Rapid Prototyping</h4>
                     <div class="skill-meter">
                         <div class="skill-level" style="width: 88%"></div>
@@ -918,7 +1075,7 @@
                     <i class="fas fa-envelope"></i>
                     <div>
                         <h3>Email</h3>
-                        <p>Czain410@gmail.com</p>
+                        <a href="mailto:Czain410@gmail.com">Czain410@gmail.com</a>
                     </div>
                 </div>
 
@@ -926,7 +1083,7 @@
                     <i class="fab fa-linkedin"></i>
                     <div>
                         <h3>LinkedIn</h3>
-                        <p><a href="https://www.linkedin.com/in/zain-hafeez-33b375223/" target="_blank">linkedin.com/in/zain-hafeez</a></p>
+                        <a href="https://www.linkedin.com/in/zain-hafeez-33b375223/" target="_blank">linkedin.com/in/zain-hafeez</a>
                     </div>
                 </div>
             </div>
@@ -934,9 +1091,21 @@
             <div class="card" style="text-align: center; margin-top: 2rem;">
                 <h3>Ready to start a project?</h3>
                 <p>I'm available for freelance work and full-time positions</p>
-                <a href="mailto:Czain410@gmail.com" class="btn">
-                    <i class="fas fa-paper-plane"></i> Send Me a Message
-                </a>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <a href="mailto:Czain410@gmail.com" class="btn">
+                        <i class="fas fa-paper-plane"></i> Send Email
+                    </a>
+                    <a href="https://wa.me/923046355474" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="tel:+923046355474" class="btn btn-outline">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                    Email: <a href="mailto:Czain410@gmail.com" style="color: var(--secondary);">Czain410@gmail.com</a> |
+                    Phone: <a href="tel:+923046355474" style="color: var(--secondary);">+92 304 6355474</a>
+                </p>
             </div>
         </div>
     </section>
@@ -959,7 +1128,7 @@
 
     <script>
         // Create floating particles
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 30;
 
@@ -998,6 +1167,43 @@
                         clearInterval(typing);
                     }
                 }, 50);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Animate skill bars when in view
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBars = entry.target.querySelectorAll('.skill-level');
+                        skillBars.forEach(bar => {
+                            bar.style.width = bar.style.width || '0%';
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            // Observe skill sections
+            const skillSections = document.querySelectorAll('#skills, #experience');
+            skillSections.forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
