@@ -3,24 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zain Hafeez | Game Developer</title>
+    <title>Zain Hafeez | Unity Game Developer</title>
     <style>
         :root {
             --primary: #1a1a2e;
-            --secondary: #00b4d8;
-            --accent: #f72585;
-            --dark: #0d1b2a;
+            --secondary: #00f0ff;
+            --accent: #ff2d75;
+            --dark: #0d0d1a;
             --light: #e2e2e2;
-            --text: #333;
+            --text: #e0e0e0;
+            --ui-dark: #0f1923;
+            --ui-light: #2a3a4a;
+            --pixel-size: 2px;
+        }
+
+        @font-face {
+            font-family: 'Press Start 2P';
+            src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         }
 
         body {
             font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: var(--dark);
             color: var(--text);
             line-height: 1.6;
+            background-image: radial-gradient(circle at 25% 25%, rgba(0, 240, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255, 45, 117, 0.1) 0%, transparent 50%);
+            overflow-x: hidden;
         }
 
         .container {
@@ -30,13 +40,15 @@
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            background: linear-gradient(135deg, var(--primary), var(--ui-dark));
             padding: 3rem 0 4rem;
             text-align: center;
             position: relative;
             color: white;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             margin-bottom: -50px;
+            border-bottom: 4px solid var(--accent);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
         }
 
         h1 {
@@ -44,7 +56,12 @@
             margin: 0;
             position: relative;
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 0 10px var(--secondary), 0 0 20px rgba(0, 240, 255, 0.5);
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-family: 'Poppins', sans-serif;
         }
 
         h2 {
@@ -53,6 +70,7 @@
             margin: 0.5rem 0;
             position: relative;
             font-weight: 600;
+            text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
         }
 
         .tagline {
@@ -60,14 +78,16 @@
             opacity: 0.9;
             position: relative;
             color: rgba(255,255,255,0.8);
+            font-style: italic;
         }
 
         nav {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: var(--ui-dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 2px solid var(--accent);
         }
 
             nav ul {
@@ -80,6 +100,7 @@
 
             nav li {
                 margin: 0 1.5rem;
+                position: relative;
             }
 
             nav a {
@@ -89,10 +110,12 @@
                 transition: all 0.3s;
                 position: relative;
                 padding: 0.5rem 0;
+                font-family: 'Poppins', sans-serif;
             }
 
                 nav a:hover {
                     color: var(--accent);
+                    text-shadow: 0 0 5px rgba(255, 45, 117, 0.5);
                 }
 
                 nav a::after {
@@ -104,6 +127,7 @@
                     height: 3px;
                     background-color: var(--accent);
                     transition: width 0.3s;
+                    box-shadow: 0 0 10px var(--accent);
                 }
 
                 nav a:hover::after {
@@ -112,6 +136,7 @@
 
         section {
             padding: 4rem 0;
+            position: relative;
         }
 
         .section-title {
@@ -123,6 +148,7 @@
             .section-title h2 {
                 display: inline-block;
                 padding-bottom: 10px;
+                font-family: 'Poppins', sans-serif;
             }
 
                 .section-title h2::after {
@@ -132,34 +158,65 @@
                     height: 4px;
                     background-color: var(--accent);
                     margin: 0.5rem auto 0;
+                    box-shadow: 0 0 10px var(--accent);
                 }
 
         .card {
-            background-color: white;
+            background-color: var(--ui-dark);
             border-radius: 8px;
             padding: 2rem;
             margin-bottom: 2rem;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             border-top: 4px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
         }
+
+            .card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(to right, var(--secondary), var(--accent));
+                opacity: 0.7;
+            }
 
             .card:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2);
             }
 
             .card h3 {
                 margin-top: 0;
-                color: var(--primary);
+                color: var(--secondary);
+                font-family: 'Poppins', sans-serif;
             }
 
             .card .date {
-                color: #666;
+                color: #aaa;
                 font-size: 0.9rem;
                 margin-bottom: 1rem;
                 font-weight: 500;
             }
+
+            .card ul {
+                padding-left: 1.2rem;
+            }
+
+            .card li {
+                margin-bottom: 0.5rem;
+                position: relative;
+            }
+
+                .card li::before {
+                    content: '▹';
+                    color: var(--accent);
+                    position: absolute;
+                    left: -1.2rem;
+                }
 
         .skills-container {
             display: flex;
@@ -169,19 +226,21 @@
         }
 
         .skill {
-            background-color: white;
+            background-color: var(--ui-dark);
             color: var(--secondary);
             padding: 0.5rem 1.2rem;
             border-radius: 30px;
             border: 2px solid var(--secondary);
             font-weight: 500;
             transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
         }
 
             .skill:hover {
                 background-color: var(--secondary);
-                color: white;
+                color: var(--ui-dark);
                 transform: translateY(-2px);
+                box-shadow: 0 0 15px var(--secondary);
             }
 
         .games-grid {
@@ -191,16 +250,19 @@
         }
 
         .game-card {
-            background-color: white;
+            background-color: var(--ui-dark);
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            border: 1px solid var(--ui-light);
         }
 
             .game-card:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
+                border-color: var(--secondary);
             }
 
             .game-card img {
@@ -208,6 +270,11 @@
                 height: 180px;
                 object-fit: cover;
                 border-bottom: 3px solid var(--secondary);
+                transition: transform 0.5s;
+            }
+
+            .game-card:hover img {
+                transform: scale(1.05);
             }
 
         .game-card-content {
@@ -216,11 +283,12 @@
 
         .game-card h3 {
             margin-top: 0;
-            color: var(--primary);
+            color: var(--secondary);
+            font-family: 'Poppins', sans-serif;
         }
 
         .game-card p {
-            color: #666;
+            color: #aaa;
             margin-bottom: 1.5rem;
         }
 
@@ -234,13 +302,34 @@
             font-weight: 600;
             transition: all 0.3s;
             border: 2px solid var(--accent);
+            box-shadow: 0 0 10px rgba(255, 45, 117, 0.3);
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
+
+            .btn::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -60%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100% );
+                transform: rotate(30deg);
+                transition: all 0.3s;
+            }
 
             .btn:hover {
                 background-color: transparent;
                 color: var(--accent);
                 transform: translateY(-2px);
+                box-shadow: 0 0 20px rgba(255, 45, 117, 0.5);
             }
+
+                .btn:hover::after {
+                    left: 100%;
+                }
 
         .btn-outline {
             background-color: transparent;
@@ -260,45 +349,67 @@
         }
 
         .contact-item {
-            background-color: white;
+            background-color: var(--ui-dark);
             padding: 1.5rem;
             border-radius: 8px;
             display: flex;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: all 0.3s;
+            border: 1px solid var(--ui-light);
         }
 
             .contact-item:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2);
+                border-color: var(--secondary);
             }
 
             .contact-item i {
                 font-size: 1.8rem;
                 margin-right: 1.5rem;
                 color: var(--accent);
+                text-shadow: 0 0 5px rgba(255, 45, 117, 0.5);
             }
 
             .contact-item h3 {
                 margin: 0 0 0.5rem;
-                color: var(--primary);
+                color: var(--secondary);
+                font-family: 'Poppins', sans-serif;
             }
 
             .contact-item p, .contact-item a {
                 margin: 0;
-                color: #666;
+                color: #aaa;
                 text-decoration: none;
+                transition: color 0.3s;
             }
 
+                .contact-item a:hover {
+                    color: var(--accent);
+                    text-shadow: 0 0 5px rgba(255, 45, 117, 0.3);
+                }
+
         footer {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            background: linear-gradient(135deg, var(--primary), var(--ui-dark));
             text-align: center;
             padding: 3rem 0;
             color: white;
             clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
             margin-top: 3rem;
+            border-top: 4px solid var(--accent);
+            position: relative;
         }
+
+            footer::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(to right, transparent, var(--secondary), transparent);
+            }
 
         .social-links {
             display: flex;
@@ -310,11 +421,21 @@
             .social-links a {
                 color: white;
                 font-size: 1.5rem;
-                transition: color 0.3s;
+                transition: all 0.3s;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background-color: var(--ui-light);
             }
 
                 .social-links a:hover {
                     color: var(--accent);
+                    transform: translateY(-3px);
+                    box-shadow: 0 0 15px var(--accent);
+                    background-color: var(--ui-dark);
                 }
 
         @media (max-width: 768px) {
@@ -342,36 +463,139 @@
             }
         }
 
-        /* Loading animation for game images */
-        .image-loader {
-            width: 100%;
-            height: 180px;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
+        /* Game Dev Elements */
+        .pixel-corners {
+            position: relative;
         }
 
-        @keyframes loading {
+            .pixel-corners::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border: 2px solid var(--secondary);
+                border-image: repeating-linear-gradient(45deg, var(--secondary), var(--secondary) 2px, transparent 2px, transparent 4px) 2;
+                pointer-events: none;
+            }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
             0% {
-                background-position: 200% 0;
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
             }
 
             100% {
-                background-position: -200% 0;
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
             }
+        }
+
+        /* 8-bit decoration */
+        .bit-decoration {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: var(--accent);
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        /* Progress bars for skills */
+        .skill-meter {
+            height: 8px;
+            background-color: var(--ui-light);
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Game console-like terminal */
+        .terminal {
+            background-color: var(--ui-dark);
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            color: var(--secondary);
+            margin: 1rem 0;
+            position: relative;
+        }
+
+            .terminal::before {
+                content: '>';
+                position: absolute;
+                left: 1rem;
+                color: var(--accent);
+            }
+
+        .terminal-text {
+            margin-left: 1.5rem;
+        }
+
+        /* Achievement badges */
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+
     <header>
         <div class="container">
             <h1>Zain Hafeez</h1>
-            <h2>Game Developer</h2>
-            <p class="tagline">3.5+ Years of Experience in Unity Game Development</p>
+            <h2>Unity Game Developer</h2>
+            <p class="tagline">Crafting engaging hyper-casual experiences with 3.5+ years of Unity expertise</p>
         </div>
     </header>
 
@@ -392,8 +616,26 @@
                 <h2>About Me</h2>
             </div>
             <div class="card">
-                <p>I'm a passionate Unity Game Developer with over 3.5 years of experience specializing in hyper-casual game development and live ops. I thrive on creating engaging gameplay experiences and optimizing existing games for better performance and player retention.</p>
-                <p>My expertise includes rapid prototyping, implementing reusable design patterns, and collaborating in creative game storming sessions to bring innovative ideas to life.</p>
+                <div class="terminal">
+                    <div class="terminal-text">
+                        <span class="typewriter">Initializing developer profile...</span>
+                    </div>
+                </div>
+                <p>I'm a passionate <strong>Unity Game Developer</strong> with over <strong>3.5 years</strong> of experience specializing in hyper-casual game development and live ops. I thrive on creating engaging gameplay experiences and optimizing existing games for better performance and player retention.</p>
+
+                <p>My expertise includes:</p>
+                <ul>
+                    <li>Rapid prototyping of hyper-casual game concepts</li>
+                    <li>Implementing reusable design patterns and systems</li>
+                    <li>Collaborating in creative game storming sessions</li>
+                    <li>Live ops and game optimization</li>
+                    <li>Debugging and performance improvements</li>
+                </ul>
+
+                <div class="badge">Hyper-Casual Expert</div>
+                <div class="badge">Unity Specialist</div>
+                <div class="badge">Live Ops</div>
+
                 <a href="#contact" class="btn" style="margin-top: 1rem;">Get In Touch</a>
             </div>
         </div>
@@ -419,9 +661,14 @@
                     <li>Worked on and improved already successful games like Scary Teacher Stone Age & Jail Break</li>
                     <li>Used debugging techniques to identify issues with games and resolve errors</li>
                 </ul>
+
+                <div class="skill-meter">
+                    <div class="skill-level" style="width: 90%"></div>
+                </div>
             </div>
 
             <div class="card">
+                <div class="date">2021-05 - 2023-07</div>
                 <h3>Game Developer at Tribech Solutions, Lahore</h3>
                 <ul>
                     <li>Produced numerous hyper-casual game prototypes including All in Hole, Shape Shifter games, and merging games</li>
@@ -432,15 +679,24 @@
                     <li>Worked on and improved successful titles like Modern Commando FPS Shooter and US Army Missile Launcher</li>
                     <li>Contributed to classic style parking and car stunt games</li>
                 </ul>
+
+                <div class="skill-meter">
+                    <div class="skill-level" style="width: 85%"></div>
+                </div>
             </div>
 
             <div class="card">
+                <div class="date">2021-02 - 2021-04</div>
                 <h3>Unity 3D Developer Certification by Game Train, Lahore</h3>
                 <ul>
                     <li>Completed 3-month boot camp as trainee, learning Unity fundamentals and game development workflows</li>
                     <li>Gained professional office culture experience</li>
                     <li>Developed a third-person shooter game from scratch as final certification project</li>
                 </ul>
+
+                <div class="skill-meter">
+                    <div class="skill-level" style="width: 80%"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -449,6 +705,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Games I've Worked On</h2>
+                <p>Click on any game to learn more</p>
             </div>
 
             <div class="games-grid">
@@ -459,6 +716,8 @@
                     <div class="game-card-content">
                         <h3>Scary Teacher Stone Age</h3>
                         <p>Worked on improvements and live ops for this successful title.</p>
+                        <div class="badge">Live Ops</div>
+                        <div class="badge">Optimization</div>
                         <a href="https://play.google.com/store/apps/details?id=com.zatg.scaryteacher.stoneage&hl=en"
                            class="btn btn-outline"
                            target="_blank">
@@ -474,6 +733,8 @@
                     <div class="game-card-content">
                         <h3>School Breakout Escape Run</h3>
                         <p>Contributed to this engaging escape game.</p>
+                        <div class="badge">Gameplay</div>
+                        <div class="badge">Level Design</div>
                         <a href="https://play.google.com/store/apps/details?id=com.zatg.school.breakout.escape.run&hl=en"
                            class="btn btn-outline"
                            target="_blank">
@@ -489,6 +750,8 @@
                     <div class="game-card-content">
                         <h3>Prison Escape Jailbreak Adventure</h3>
                         <p>Worked on improvements for this popular jailbreak game.</p>
+                        <div class="badge">Live Ops</div>
+                        <div class="badge">Bug Fixing</div>
                         <a href="https://play.google.com/store/apps/details?id=com.genigames.prison.escape.jailbreak.adventure"
                            class="btn btn-outline"
                            target="_blank">
@@ -504,6 +767,8 @@
                     <div class="game-card-content">
                         <h3>Flying Car Jump Evolution</h3>
                         <p>Developed this exciting flying car game prototype.</p>
+                        <div class="badge">Prototyping</div>
+                        <div class="badge">Gameplay</div>
                         <a href="https://play.google.com/store/apps/details?id=com.genigames.flying.car.jump.evolution"
                            class="btn btn-outline"
                            target="_blank">
@@ -519,6 +784,8 @@
                     <div class="game-card-content">
                         <h3>War Drone</h3>
                         <p>Contributed to this drone combat game.</p>
+                        <div class="badge">AI</div>
+                        <div class="badge">Combat Systems</div>
                         <a href="https://play.google.com/store/apps/details?id=com.genigames.drone.attack.war.strike"
                            class="btn btn-outline"
                            target="_blank">
@@ -534,22 +801,9 @@
                     <div class="game-card-content">
                         <h3>Brain Rot Escape</h3>
                         <p>Worked on this challenging obstacle course game.</p>
+                        <div class="badge">Physics</div>
+                        <div class="badge">Level Design</div>
                         <a href="https://play.google.com/store/apps/details?id=com.genigames.obby.prison.escape.brainrot"
-                           class="btn btn-outline"
-                           target="_blank">
-                            View on Play Store
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Epic Wheels Evolution -->
-                <div class="game-card">
-                    <img src="https://play-lh.googleusercontent.com/xt-Mi5hs8jxfLzoyjgF7dFglFgIeWurJ4vvrmzGrdAgxeGldsugM3onY19KbhKVFWbAV=w5120-h2880-rw"
-                         alt="Flying Wheels Evolution">
-                    <div class="game-card-content">
-                        <h3>Flying Wheels Evolution</h3>
-                        <p>Contributed to this flying car game.</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.genigames.flying.car.jump.evolution"
                            class="btn btn-outline"
                            target="_blank">
                             View on Play Store
@@ -564,23 +818,52 @@
         <div class="container">
             <div class="section-title">
                 <h2>Technical Skills</h2>
+                <p>My development toolkit and expertise</p>
             </div>
 
             <div class="skills-container">
-                <span class="skill">C#</span>
-                <span class="skill">Unity 3D</span>
-                <span class="skill">Git</span>
-                <span class="skill">Adobe Photoshop</span>
-                <span class="skill">Adobe Illustrator</span>
-                <span class="skill">Microsoft Office</span>
-                <span class="skill">Assembla</span>
-                <span class="skill">Trello</span>
+                <span class="skill">Unity 3D <i class="fas fa-gamepad"></i></span>
+                <span class="skill">C# <i class="fas fa-code"></i></span>
+                <span class="skill">Hyper-Casual Design</span>
                 <span class="skill">Game Prototyping</span>
                 <span class="skill">Live Ops</span>
+                <span class="skill">Git <i class="fab fa-git-alt"></i></span>
                 <span class="skill">Debugging</span>
-                <span class="skill">Game Design</span>
-                <span class="skill">Rapid Development</span>
-                <span class="skill">Hyper-Casual Games</span>
+                <span class="skill">Performance Optimization</span>
+                <span class="skill">UI/UX Design</span>
+                <span class="skill">Adobe Photoshop <i class="fas fa-paint-brush"></i></span>
+                <span class="skill">Adobe Illustrator</span>
+                <span class="skill">Game Design Patterns</span>
+                <span class="skill">Mobile Optimization</span>
+                <span class="skill">Agile Development</span>
+            </div>
+
+            <div class="card" style="margin-top: 2rem;">
+                <h3>Specializations</h3>
+                <div style="margin-bottom: 1rem;">
+                    <h4>Hyper-Casual Game Development</h4>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <h4>Unity Programming</h4>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <h4>Live Ops & Updates</h4>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div>
+                    <h4>Rapid Prototyping</h4>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 88%"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -595,12 +878,14 @@
                 <div class="date">2018-10 - 2020-12</div>
                 <h3>Master's Degree in Computer Science</h3>
                 <p>Government College University - Faisalabad</p>
+                <div class="badge">Game Development Focus</div>
             </div>
 
             <div class="card">
                 <div class="date">2016-08 - 2018-09</div>
                 <h3>Associate Degree Program</h3>
                 <p>University of Central Punjab (Okara Campus)</p>
+                <div class="badge">Computer Science</div>
             </div>
         </div>
     </section>
@@ -609,6 +894,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Contact Me</h2>
+                <p>Let's create amazing games together!</p>
             </div>
 
             <div class="contact-info">
@@ -644,6 +930,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card" style="text-align: center; margin-top: 2rem;">
+                <h3>Ready to start a project?</h3>
+                <p>I'm available for freelance work and full-time positions</p>
+                <a href="mailto:Czain410@gmail.com" class="btn">
+                    <i class="fas fa-paper-plane"></i> Send Me a Message
+                </a>
+            </div>
         </div>
     </section>
 
@@ -656,10 +950,56 @@
                 <a href="https://www.linkedin.com/in/zain-hafeez-33b375223/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:Czain410@gmail.com"><i class="fas fa-envelope"></i></a>
                 <a href="tel:+923046355474"><i class="fas fa-phone"></i></a>
+                <a href="https://play.google.com/store/apps/developer?id=Geni+Team+Solutions" target="_blank"><i class="fab fa-google-play"></i></a>
             </div>
 
-            <p>&copy; 2023 Zain Hafeez. All rights reserved.</p>
+            <p>&copy; 2025 Zain Hafeez. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Create floating particles
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+
+                // Random size
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // Random animation duration
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+
+            // Simple typewriter effect
+            const typewriterElements = document.querySelectorAll('.typewriter');
+            typewriterElements.forEach(el => {
+                const text = el.textContent;
+                el.textContent = '';
+
+                let i = 0;
+                const typing = setInterval(() => {
+                    if (i < text.length) {
+                        el.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typing);
+                    }
+                }, 50);
+            });
+        });
+    </script>
 </body>
 </html>
